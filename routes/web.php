@@ -17,11 +17,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'UserController@index')->name('home');
-Route::get('/add', 'UserController@create')->name('addUser');
-Route::post('/add', 'UserController@store')->name('postUser');
+Route::get('/home', 'UserController@index')->name('home')->middleware('auth');
+Route::get('/add', 'UserController@create')->name('addUser')->middleware('auth');
+Route::post('/add', 'UserController@store')->name('postUser')->middleware('auth');
 
-Route::get('/edit/{id}', 'UserController@edit')->name('editUser');
+Route::get('/edit/{id}', 'UserController@edit')->name('editUser')->middleware('auth');
 
-Route::post('/edit/{id','UserController@update')->name('postEdit');
-Route::delete('/delete/{id}', 'UserController@destroy')->name('deleteUser');
+Route::post('/edit/{id','UserController@update')->name('postEdit')->middleware('auth');
+Route::delete('/delete/{id}', 'UserController@destroy')->name('deleteUser')->middleware('auth');
